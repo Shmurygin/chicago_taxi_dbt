@@ -13,7 +13,7 @@
 # Google-таблица:
 https://docs.google.com/spreadsheets/d/1V_NW6WIKlsULCvtbFR-HeuyfcK-OzXCeYEZ2WQaWzgs/edit?usp=sharing
 
-Технологии:
+# Технологии:
 
 dbt Cloud – трансформация данных
 
@@ -23,7 +23,7 @@ Google Sheets – визуализация результатов
 
 SyncWith (или BigQuery Connector) – автоматическая синхронизация
 
-Структура проекта:
+# Структура проекта:
 
 chicago-taxi-analysis/
 ├── models/
