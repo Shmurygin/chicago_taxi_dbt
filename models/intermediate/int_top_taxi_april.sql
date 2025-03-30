@@ -3,7 +3,7 @@
     materialized='table'
   )
 }}
-
+--сгруппировали для 2018.04 и взяли топ 3
 WITH april_tips AS (
   SELECT
     taxi_id,
