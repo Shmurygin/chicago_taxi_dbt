@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: chicago_taxi
+    database: bigquery-public-data
+    schema: chicago_taxi_trips
+    tables:
+      - name: taxi_trips
+        description: "Chicago taxi trips data"
+        columns:
+          - name: unique_key
+            description: "id поездки"
+          - name: taxi_id
+            description: "id taxi"
+          - name: trip_start_timestamp
+            description: "Время начала поездки"
+          - name: tips
+            description: "Сумма чаевых"
