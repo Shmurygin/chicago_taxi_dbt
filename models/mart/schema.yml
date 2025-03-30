@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: taxi_tips_analysis
+    description: "Инкрементальная витрина анализа чаевых топ-3 такси за 2018 год"
+    columns:
+      - name: taxi_id
+        description: "Идентификатор такси"
+      - name: year_month
+        description: "Год и месяц агрегации"
+      - name: tips_sum
+        description: "Сумма чаевых за месяц"
+      - name: percent
+        description: "Процентное изменение по сравнению с предыдущим месяцем"
+      - name: dbt_updated_at
+        description: "Время последнего обновления записи"
