@@ -2,7 +2,7 @@
   config(
     materialized='view',
     alias='stg_taxi_trips',
-    cluster_by=['taxi_id', 'date_trunc(trip_start_timestamp, MONTH)']
+    cluster_by=['taxi_id']
   )
 }}
 
