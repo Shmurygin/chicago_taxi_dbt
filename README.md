@@ -1,15 +1,45 @@
-Welcome to your new dbt project!
+# Задание
+Найдите три машины, получившие наибольшее количество чаевых в апреле 2018 года, и выведите, как изменялась эта сумма в процентах в последующие месяцы по сравнению с предыдущим в таблице со столбцами taxi_id, year_month, tips_sum, tips_change. В качестве даты поездки возьмите дату начала поездки.
+В качестве источника данных используйте bigquery-public-data.chicago_taxi_trips.
 
-### Using the starter project
+Пришлите нам ссылку на публичный репозиторий в GitHub с проектом dbt, в котором производится расчет, и выгрузку таблицы с результатом в google sheets. Дополнительным плюсом будет, если вы определите источники, разнесёте cte по разным моделям, опишете столбцы моделей и сделаете финальную таблицу инкрементальной.
 
-Try running the following commands:
-- dbt run
-- dbt test
+ проекте
+Проект анализирует данные о чаевых такси в Чикаго за 2018 год, выявляя топ-3 машины по чаевым за апрель 2018 и отслеживая динамику изменений в последующие месяцы.
 
+Итоговый результат:
+Автоматически обновляемая Google-таблица с витриной данных, синхронизируемой из BigQuery.
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [dbt community](https://getdbt.com/community) to learn from other analytics engineers
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+# Google-таблица:
+https://docs.google.com/spreadsheets/d/1V_NW6WIKlsULCvtbFR-HeuyfcK-OzXCeYEZ2WQaWzgs/edit?usp=sharing
+
+# Технологии:
+
+dbt Cloud – трансформация данных
+
+BigQuery – хранение и обработка данных
+
+Google Sheets – визуализация результатов
+
+SyncWith (или BigQuery Connector) – автоматическая синхронизация
+
+# Структура проекта:
+
+chicago-taxi-analysis/
+├── models/
+│   ├── staging/
+│   │   ├── sources.yml           # Описание источников данных
+│   │   └── stg_taxi_trips.sql    # Загрузка сырых данных
+│   ├── intermediate/
+│   │   ├── int_top_taxi_april.sql # Топ-3 такси за апрель 2018
+│   │   └── int_monthly_tips.sql   # Агрегация чаевых по месяцам
+│   └── marts/
+│       ├── core/
+│       │   └── taxi_tips_analysis.sql  # Финальная витрина
+│       └── schema.yml            # Документация моделей
+├── dbt_project.yml               # Конфигурация проекта
+└── README.md                   
+
+Инкрементальная загрузка
+Финальная модель (taxi_tips_analysis) обновляется только при изменениях в данных за 2018 год:
+
