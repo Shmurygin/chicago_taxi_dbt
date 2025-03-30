@@ -11,6 +11,7 @@
 Автоматически обновляемая Google-таблица с витриной данных, синхронизируемой из BigQuery.
 
 # Google-таблица:
+
 https://docs.google.com/spreadsheets/d/1V_NW6WIKlsULCvtbFR-HeuyfcK-OzXCeYEZ2WQaWzgs/edit?usp=sharing
 
 # Технологии:
@@ -19,27 +20,25 @@ dbt Cloud – трансформация данных
 
 BigQuery – хранение и обработка данных
 
-Google Sheets – визуализация результатов
+Google Sheets – выгрузка результатов
 
-SyncWith (или BigQuery Connector) – автоматическая синхронизация
+SyncWith  – синхронизация
 
 # Структура проекта:
-
+```
 chicago-taxi-analysis/
 ├── models/
 │   ├── staging/
-│   │   ├── sources.yml           # Описание источников данных
-│   │   └── stg_taxi_trips.sql    # Загрузка сырых данных
+│   │   ├── _taxi_trip__source.yml           # Описание источников
+│   │   └── stg_taxi_trips.sql               # Сырые данные
 │   ├── intermediate/
-│   │   ├── int_top_taxi_april.sql # Топ-3 такси за апрель 2018
-│   │   └── int_monthly_tips.sql   # Агрегация чаевых по месяцам
+│   │   ├── int_top_taxi_april.sql           # Топ-3 такси
+│   │   └── int_monthly_tips.sql             # Чаевые по месяцам
 │   └── marts/
-│       ├── core/
-│       │   └── taxi_tips_analysis.sql  # Финальная витрина
-│       └── schema.yml            # Документация моделей
-├── dbt_project.yml               # Конфигурация проекта
-└── README.md                   
-
-Инкрементальная загрузка
-Финальная модель (taxi_tips_analysis) обновляется только при изменениях в данных за 2018 год:
+│       └── taxi_tips_analysis.sql           # Финальная витрина
+│       └── schema.yml                       # Документация
+└── dbt_project.yml                          # Конфиг проекта            
+```
+# Инкрементальная загрузка
+Финальная модель (taxi_tips_analysis) обновляется только при изменениях в данных за 2018 год.
 
